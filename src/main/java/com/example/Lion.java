@@ -16,6 +16,10 @@ public class Lion {
         }
     }
 
+    public void setFeline(Feline feline) {
+        this.feline = feline;
+    }
+
     Feline feline = new Feline();
 
     public int getKittens() {

@@ -33,6 +33,7 @@ public class LionWithoutParameterizationTest {
     @Test
     public void testGetLionKittens() throws Exception {
             Lion lion = new Lion("Самка");
+            lion.setFeline(feline);
             Mockito.when(feline.getKittens()).thenReturn(5);
             int actual = lion.getKittens();
             assertEquals(5,actual);
