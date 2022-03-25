@@ -22,41 +22,19 @@ public class LionTest {
         return new Object[][] {
                 { "Самец", true},
                 { "Самка", false},
-                { "Other", null},
 
         };
     }
 
     @Test
-    public void doesHaveMane() {
-        try {
+    public void doesHaveMane() throws Exception {
+
             Lion lion = new Lion(gender);
             Boolean actual = lion.doesHaveMane();
             assertEquals(expected, actual);
-        } catch (Exception exception) {
-           assertTrue(exception.getMessage().contains("Используйте допустимые значения пола животного - самей или самка"));
-
-        }
 
     }
 
-    @Test
-    public void testGetLionFood() {
-        try { Lion lion = new Lion(gender);
-        List<String> actual = lion.getFood();
-         assertArrayEquals(new Object[]{"Животные", "Птицы", "Рыба"},actual.toArray());
-        } catch (Exception ignored) {
 
-        }
-    }
 
-    @Test
-    public void testGetLionKittens() {
-        try { Lion lion = new Lion(gender);
-            int actual = lion.getKittens();
-            assertEquals(1,actual);
-        } catch (Exception ignored) {
-
-        }
-    }
 }
