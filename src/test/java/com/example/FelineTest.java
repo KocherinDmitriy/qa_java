@@ -13,7 +13,7 @@ public class FelineTest {
     public void testFelineEatMeat() throws Exception {
         Feline feline = new Feline();
         List<String> actual = feline.eatMeat();
-        assertArrayEquals(new Object[]{"Животные", "Птицы", "Рыба"},actual.toArray());
+        assertEquals(List.of("Животные", "Птицы", "Рыба"),actual);
     }
 
     @Test
