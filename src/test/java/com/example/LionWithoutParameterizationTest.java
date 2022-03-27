@@ -10,15 +10,19 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class LionWithoutParameterizationTest {
 
-    @Test
+
+    @Test //(expected  = Exception.class) -- Можно и так, но тогда доступа к тексту кастомного эксепшена не могу получить. Провеяем что просто есть эксепшен
     public void doesHaveManeWithCustomException() {
         try {
-            Lion lion = new Lion("Значение");
-            Boolean actual = lion.doesHaveMane();
+            Lion lion = new Lion("ЗначениеОтличноеОтСпискаОбрабатываемых");
+            fail("Эксепшен не был выброшен");
         } catch (Exception exception) {
             assertTrue(exception.getMessage().contains("Используйте допустимые значения пола животного - самей или самка"));
         }
     }
+
+
+
     @Test
     public void testGetLionFood() throws Exception {
        Lion lion = new Lion("Самец");
