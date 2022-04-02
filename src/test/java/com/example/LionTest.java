@@ -2,9 +2,6 @@ package com.example;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
@@ -26,10 +23,11 @@ public class LionTest {
         };
     }
 
+
     @Test
     public void doesHaveMane() throws Exception {
-
-            Lion lion = new Lion(gender);
+            Feline feline=new Feline();
+            Lion lion = new Lion(gender,feline);
             Boolean actual = lion.doesHaveMane();
             assertEquals(expected, actual);
 

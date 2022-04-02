@@ -14,29 +14,29 @@ public class LionWithoutParameterizationTest {
     @Test //(expected  = Exception.class) -- Можно и так, но тогда доступа к тексту кастомного эксепшена не могу получить. Провеяем что просто есть эксепшен
     public void doesHaveManeWithCustomException() {
         try {
-            Lion lion = new Lion("ЗначениеОтличноеОтСпискаОбрабатываемых");
+            Lion lion = new Lion("ЗначениеОтличноеОтСпискаОбрабатываемых",feline);
             fail("Эксепшен не был выброшен");
         } catch (Exception exception) {
             assertTrue(exception.getMessage().contains("Используйте допустимые значения пола животного - самей или самка"));
         }
     }
 
-
+    @Mock
+    Feline feline;
 
     @Test
     public void testGetLionFood() throws Exception {
-       Lion lion = new Lion("Самец");
+       Lion lion = new Lion("Самец",feline);
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actual = lion.getFood();
         assertEquals(List.of("Животные", "Птицы", "Рыба"),actual);
 
     }
 
-    @Mock
-    Feline feline;
 
     @Test
-    public void testGetLionKittens(){
-            Lion lion=new Lion(feline);
+    public void testGetLionKittens() throws Exception {
+            Lion lion=new Lion("Самец",feline);
             Mockito.when(feline.getKittens()).thenReturn(5);
             int actual = lion.getKittens();
             assertEquals(5,actual);
